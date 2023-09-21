@@ -9,7 +9,6 @@ from django.http import HttpResponseForbidden
 from django.views.decorators.cache import never_cache
 
 
-
 from app.models import Course,Demo_video
 from .forms import CourseForm,DemoVideoForm
 
@@ -38,7 +37,7 @@ class CourseDetailView(DetailView):
 class CourseAddView(CreateView):
     model = Course
     form_class = CourseForm
-    template_name = 'course-add.html'
+    template_name = 'courses-add.html'
     success_url = reverse_lazy('course-list')
 
 
@@ -54,7 +53,7 @@ class CourseUpdateView(UpdateView):
     form_class = CourseForm
     model = Course
     template_name = 'course-update.html'
-    success_url = reverse_lazy('course-list')
+    success_url = reverse_lazy('courses-list')
 
 @method_decorator(sadecks, name='dispatch')
 class CourseDeleteView(View):
@@ -75,7 +74,7 @@ class DemoVideoListView(ListView):
 class DemoVideoAddView(CreateView):
     model = Demo_video
     form_class = DemoVideoForm
-    template_name = 'demovideo-add.html'
+    template_name = 'video-add.html'
     success_url = reverse_lazy('course-list')
 
 @method_decorator(decks, name='dispatch')

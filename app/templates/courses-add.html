@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <title>Course Add </title>
+</head>
+<style>
+    /* navbar styles */
+
+
+.navigation-bar{
+    background-color: transparent;
+    background-color: #362B2E;
+}
+.logo-img {
+    width: 150px;
+}
+
+.signIn-btn{
+    width: 100px;
+    height: 50px;
+    background-color: white;
+    font-weight: bold;
+
+}
+.signUp-btn{
+    width: 100px;
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid white;
+    font-weight: bold;
+    color: white;
+}
+    /* Remove border and focus border */
+    .form-control {
+        border: none;
+        box-shadow: none;
+    }
+
+    /* Optional: If you want to remove the outline on focus as well */
+    .form-control:focus {
+        outline: none;
+        box-shadow: none;
+        border-bottom: 1px solid tomato;
+    }
+
+    /* Remove border and focus border for file input */
+    .input-group input[type="file"].form-control {
+        border: none;
+        outline: none;
+        /* This removes the focus outline, which is typically a blue border on most browsers */
+    }
+
+    /* Remove border and focus border for select element */
+    .input-group .form-select {
+        border: none;
+        outline: none;
+        /* This removes the focus outline, which is typically a blue border on most browsers */
+        box-shadow: none;
+        /* This removes any box shadow on focus */
+    }
+</style>
+
+<body class="" style="background-color: rgba(119, 136, 153, 0.651);">
+    <header>
+        <nav class="navbar navbar-expand-lg navigation-bar sticky-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><img src="https://i.postimg.cc/tTBdMwZq/logo.png" class="logo-img ms-3"
+                        alt="logo" /></a>
+                <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav fs-4 mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-white active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Courses
+                            </a>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">Course 1</a></li>
+                              <li><a class="dropdown-item" href="#">Course 2</a></li>
+                              <li><a class="dropdown-item" href="#">Course 3</a></li>
+                            </ul>
+                          </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="">About Us</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex ms-auto" role="search">
+                        <button class="signIn-btn me-4" type="submit">Sign in</button>
+                        <button class="signUp-btn ms-2 me-3" type="submit">
+                            Sign up
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container" style="width: 90%;">
+        <h2 class="text-center fw-bolder mt-4 mb-3">Add Course</h2>
+        <div class="row">
+            <section class="col-xs-12">
+                <!-- class="sr-only" will hide from the screen -->
+                <form action="" method="post" enctype="multipart/form-data" class="shadow p-3 mb-5 bg-body-tertiary rounded">
+                    {%csrf_token%}
+                    {{form.as_p}}
+                    <!-- <input type="submit" value="ADD" class="btn btn-outline-success form-control"> -->
+                    <div class="text-center"><button class="btn btn-outline-danger">Add Course</button></div>
+
+                </form>  
+
+            </section>
+        </div>
+        <!-- row -->
+    </div>
+    <!-- content container -->
+</body>
+
+</html>

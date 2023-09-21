@@ -12,10 +12,8 @@
 <body>
 
   <div class="row p-5">
-    <!-- <div class="col--4"></div>
-    <div class="col--4"> -->
-      <h2 class="text-center mt-3 text-danger">CONTENT</h2>
-
+   <div class="col--4"></div>
+    <div class="col--4">
       <!-- <a href="" class="btn btn-success"></a> -->
 
       <!-- <div class="card mt-5 me-5" style="width: 18rem;">
@@ -31,6 +29,9 @@
     <video width="320" height="240" controls>
         <source src="{{ d.video_file.url }}" type="video/mp4">
       </video>
+
+      <div> <a href="{%url 'demovideo-detail' d.id%}" class="btn btn-primary">DETAILS</a> 
+      </div>
       
     <!-- <video width="640" height="360" controls>
             <source src="" type="video/mp4">
@@ -42,7 +43,7 @@
   <!-- </div> -->
 
   {%endfor%}
-  <!-- <div class="col--4"></div> -->
+  <div class="col--4"></div>
 
   </div>
 </body>
