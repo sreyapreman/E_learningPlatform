@@ -29,7 +29,7 @@ urlpatterns = [
     path('delete/<int:pk>/',views.CourseDeleteView.as_view(),name='course-delete'),
 
 
-    path('index/',views.IndexView.as_view(),name='index'),
+    path('',views.IndexView.as_view(),name='index'),
     path('quizz/',views.QuizView.as_view(),name='quizz'),
 
     path('demo/<int:pk>/',views.DemoVideoDetailView.as_view(),name='demovideo-detail'),

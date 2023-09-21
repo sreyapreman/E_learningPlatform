@@ -36,6 +36,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" aria-disabled="true">About Us</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" aria-disabled="true" href="{%url 'logout'%}">LOGOUT</a>
+                        </li>
                     </ul>
                     <!-- <form class="d-flex ms-auto" role="search">
                         <button class="signIn-btn me-4" type="submit">Sign in</button>
@@ -58,8 +61,9 @@
             <div class="icon"><i  class="fa-brands fa-css3"></i></a></div>
             <div class="title">{{c.title}}</div>
             <div class="course-description">{{c.description}}
-                <button class="btn btn-outline-danger m-2"><a href="{%url 'course-details' c.id%}" style="text-decoration: none; color: black;">Know
+                <button class="btn btn-outline-danger m-2 mt-3"><a href="{%url 'course-details' c.id%}" style="text-decoration: none; color: black;">Know
                    more</a></button>
+                   <button class="btn btn-outline-success m-2"><a href="{%url 'quizz'%}" style="text-decoration: none; color: black;">TEST</a></button>
 
             </div>
         </li>

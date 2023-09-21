@@ -18,8 +18,6 @@ def log_out_view(request, *args, **kwargs):
     messages.success(request,'logout successfully')
     return redirect('login')
 
-
-
 class RegistrationView(CreateView):
     model=User
     template_name="register.html"
