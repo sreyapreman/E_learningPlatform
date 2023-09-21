@@ -28,7 +28,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav fs-4 mx-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link text-white active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link text-white active" aria-current="page" href="{%url 'index'%}">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="#">Courses</a>
@@ -37,87 +37,34 @@
                             <a class="nav-link text-white" aria-disabled="true">About Us</a>
                         </li>
                     </ul>
-                    <form class="d-flex ms-auto" role="search">
+                    <!-- <form class="d-flex ms-auto" role="search">
                         <button class="signIn-btn me-4" type="submit">Sign in</button>
                         <button class="signUp-btn ms-2 me-3" type="submit">
                             Sign up
                         </button>
-                    </form>
+                    </form> -->
                 </div>
             </div>
         </nav>
     </header>
 
     <!-- navbar end -->
+
     <h1 class="fw-bolder "><span style="color: tomato;">Our</span> Courses</h1>
     <ol>
-        <li style="--accent-color:#0D6EFD">
-            <div class="icon"><i  class="fa-brands fa-codepen"></i></a></div>
-            <div class="title">Codepen</div>
-            <div class="course-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, impedit?
-                orem ipsum dolor sit amet consectetur adipisicing elit
-                orem ipsum dolor sit amet consectetur adipisicing elit
-                <button class="btn btn-outline-danger m-2"><a href="" style="text-decoration: none; color: black;">Know
-                        more</a></button>
-            </div>
-
-        </li>
-        <!-- <li style="--accent-color:#6710F5">
-            <div class="icon"><i  class="fa-brands fa-html5"></i></a></div>
-            <div class="title">HTML 5</div>
-            <div class="course-description">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                orem ipsum dolor sit amet consectetur adipisicing elit
-                orem ipsum dolor sit amet consectetur adipisicing elit
-                <button class="btn btn-outline-danger m-2"><a href="" style="text-decoration: none; color: black;">Know
-                        more</a></button>
-
-            </div>
-        </li> -->
+        
         {%for c in courses%}
         <li style="--accent-color:#6F42C1">
             <div class="icon"><i  class="fa-brands fa-css3"></i></a></div>
             <div class="title">{{c.title}}</div>
             <div class="course-description">{{c.description}}
-                <button class="btn btn-outline-danger m-2"><a href="" style="text-decoration: none; color: black;">Know
+                <button class="btn btn-outline-danger m-2"><a href="{%url 'course-details' c.id%}" style="text-decoration: none; color: black;">Know
                    more</a></button>
 
             </div>
         </li>
         {%endfor%}
-        <!-- <li style="--accent-color:#D63384">
-            <div class="icon"><i  class="fa-brands fa-js"></i></a></div>
-            <div class="title">Javascript</div>
-            <div class="course-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor laboriosam
-                orem ipsum dolor sit amet consectetur adipisicing elit odio alias.
-                orem ipsum dolor sit amet consectetur adipisicing elit
-                <button class="btn btn-outline-danger m-2"><a href="" style="text-decoration: none; color: black;">Know
-                        more</a></button>
-
-
-            </div>
-        </li>
-        <li style="--accent-color:#DC3545">
-            <div class="icon"><i  class="fa-brands fa-github"></i></a></div>
-            <div class="title">Github</div>
-            <div class="course-description">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                orem ipsum dolor sit amet consectetur adipisicing elit
-                orem ipsum dolor sit amet consectetur adipisicing elit
-                <button class="btn btn-outline-danger m-2"><a href="" style="text-decoration: none; color: black;">Know
-                        more</a></button>
-
-            </div>
-        </li>
-        <li style="--accent-color:#DC3545">
-            <div class="icon"><i  class="fa-brands fa-python"></i></a></div>
-            <div class="title">Python</div>
-            <div class="course-description">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                orem ipsum dolor sit amet consectetur adipisicing elit
-                orem ipsum dolor sit amet consectetur adipisicing elit
-                <button class="btn btn-outline-danger m-2"><a href="" style="text-decoration: none; color: black;">Know
-                        more</a></button>
-
-            </div>
-        </li> -->
+    
     </ol>
 </body>
 </html>
