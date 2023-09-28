@@ -2,7 +2,6 @@ from django.shortcuts import render,redirect
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,View,DeleteView,TemplateView
 from django.utils.decorators import method_decorator
 
-from django.contrib.admin.views.decorators import staff_member_required
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseForbidden
@@ -33,6 +32,17 @@ class CourseDetailView(DetailView):
     template_name="course-details.html"
     context_object_name="course"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Get the current course
+        course = self.get_object()
+        # Get the demo videos related to the course
+        demo_videos = course.demo_video_set.all()
+        context['demo_videos'] = demo_videos
+        return context
+
+
+
 @method_decorator(sadecks, name='dispatch')
 class CourseAddView(CreateView):
     model = Course
@@ -42,7 +52,6 @@ class CourseAddView(CreateView):
 
 
     def dispatch(self, request, *args, **kwargs):
-        # Check if the user is a staff member, if not, deny access
         if not self.request.user.is_staff:
             return HttpResponseForbidden("You don't have permission to access this page.")
         return super().dispatch(request, *args, **kwargs)
@@ -88,7 +97,7 @@ class DemoVideoUpdateView(UpdateView):
     model = Demo_video
     form_class = DemoVideoForm
     template_name = 'demovideo-edit.html'
-    success_url = reverse_lazy('demovideo-detail')
+    success_url = reverse_lazy('course-list')
 
 
 @method_decorator(sadecks, name='dispatch')
@@ -100,6 +109,7 @@ class DemoVideoDeleteView(DeleteView):
 
 class IndexView(TemplateView):
     template_name="index.html"
+
 
 class QuizView(TemplateView):
     template_name="quizz.html"

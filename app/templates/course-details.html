@@ -15,9 +15,22 @@
 
 </head>
 
+<style>
+    .video-list {
+        display: flex; /* Use flexbox to arrange items horizontally */
+        overflow-x: auto; /* Enable horizontal scrolling if needed */
+    }
+
+    .video-item {
+        flex: 0 0 auto; /* Don't allow flex items to grow or shrink */
+        margin-right: 10px; /* Optional: Add margin between videos */
+    }
+</style>
+
+
+
 <body style="background-color: rgba(128, 128, 128, 0.667);">
     <div class="container mt-5">
-
         <h4 class="text-center fw-bold">Details of</h4>
         <h2 class="text-center fw-bolder">{{course.title}}</h2>
         <div class="row main-row mt-4">
@@ -31,27 +44,42 @@
                 <div class="d-flex  justify-content-around mt-3">
 
                     {% if request.user.role == 'instructor' %}
-                        <a href="{%url 'course-add' %}" class="btn btn-info">ADD</a>
+                    <a href="{%url 'course-add' %}" class="btn btn-info">ADD</a>
                     {% endif %}
 
                     {% if request.user.role == 'instructor' %}
-                         <a href="{%url 'course-update' course.id%}" class="btn btn-info">UPDATE</a>              
+                    <a href="{%url 'course-update' course.id%}" class="btn btn-info">UPDATE</a>
                     {% endif %}
 
                     {% if request.user.role == 'instructor' %}
-                        <a href="{%url 'course-delete' course.id%}" class="btn btn-info">DELETE</a>              
+                    <a href="{%url 'course-delete' course.id%}" class="btn btn-info">DELETE</a>
                     {% endif %}
 
-                    <!-- <button class="btn btn-info"><a href="{%url 'course-update' course.id%}">UPDATE</a></button> -->
-                    <a href="{%url 'demovideo-list'%}" class="btn btn-info">GET CLASS</a>
-                    <!-- <button class="btn btn-info">button-3</button>
-                        <button class="btn btn-info">button-4</button> -->
+                
                 </div>
 
-
             </div>
+
         </div>
-    </div>
+
+        <div class="video-list">
+            {% for demovideo in course.demo_video_set.all %}
+                <div class="video-item">
+                    <h3 class="text-center mt-5 mb-3">{{ demovideo.title }}</h3>
+                    <p class="mb-2">{{ demovideo.content }}</p>
+                    <video width="320" height="240" controls>
+                        <source src="{{ demovideo.video_file.url }}" type="video/mp4">
+                    </video>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-center mt-4 mb-5">
+            {% if request.user.role == 'instructor' %}
+
+            <a href="{%url 'demovideo-list'%}" class="btn btn-info">CLASS DETAILS</a>
+            {%endif%}
+        </div>
 
 </body>
 

@@ -9,22 +9,33 @@
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
+
+<style>
+  .video-list {
+      display: flex; /* Use flexbox to arrange items horizontally */
+      flex-wrap: nowrap; /* Prevent wrapping to the next line */
+      overflow-x: auto; /* Enable horizontal scrolling if needed */
+  }
+
+  .video-item {
+      flex: 0 0 auto; /* Don't allow flex items to grow or shrink */
+      margin-right: 10px; /* Optional: Add margin between videos */
+  }
+</style>
+
+
 <body>
 
-  <div class="row p-5">
-   <div class="col--4"></div>
-    <div class="col--4">
-      <!-- <a href="" class="btn btn-success"></a> -->
-
-      <!-- <div class="card mt-5 me-5" style="width: 18rem;">
-        <img src="{{d.picture.url}}" class="card-img-top" width="80%" height="200px"></img> -->
+  {% if request.user.role == 'instructor' %}
+  <a href="{%url 'demovideo-add' %}" class="btn btn-primary mt-2">ADD</a>
+  {% endif %}
 
         {%for d in demovideos%}
       <!-- <div class="card-body"> -->
         <p class="card-text">{{d.course}}</p>
-        <!-- <a href="" class="btn btn-primary">DETAILS</a> -->
-      <!-- </div>     -->
-    <!-- </div> -->
+        <p class="card-text">{{d.title}}</p>
+
+        <p class="card-text">{{d.content}}</p>
 
     <video width="320" height="240" controls>
         <source src="{{ d.video_file.url }}" type="video/mp4">
@@ -33,19 +44,9 @@
       <div> <a href="{%url 'demovideo-detail' d.id%}" class="btn btn-primary">DETAILS</a> 
       </div>
       
-    <!-- <video width="640" height="360" controls>
-            <source src="" type="video/mp4">
-            Your browser does not support the video tag.
-        </video> -->
-
-  
-
-  <!-- </div> -->
 
   {%endfor%}
-  <div class="col--4"></div>
-
-  </div>
+ 
 </body>
 
 </html>
